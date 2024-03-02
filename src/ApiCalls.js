@@ -18,7 +18,6 @@ export const getLocationWeather = (location) => {
 			}
 			return response.json();
 		})
-		.then(data => console.log(data))
 }
 
 export let dummyData = {

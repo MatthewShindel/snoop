@@ -15,7 +15,6 @@ export default function Form({ navigate, updateLocationInformation }) {
 			updateLocationInformation(data);
 			clearInput();
 			navigate('/snoop/location')
-			console.log('inside event call');
 		})
 	}
 	function clearInput() {

@@ -5,12 +5,13 @@ import Location from '../Location/Location';
 import Error from '../Error/Error';
 import SavedLocations from '../SavedLocations/SavedLocations';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { dummyData } from '../../ApiCalls';
 
 function App() {
 	const navigate = useNavigate();
 	const [arrayOfLocations,setArrayOfLocations] = useState([]);
-	const [locationInformation, setLocationInformation] = useState({});
+	const [locationInformation, setLocationInformation] = useState();
 
 	function updateLocationInformation(location) {
 		setLocationInformation(location)
@@ -18,6 +19,10 @@ function App() {
 	function updateArrayOfLocations(location) {
 		setArrayOfLocations(prevLocations => [...prevLocations,location])
 	}
+
+	useEffect(() => {
+		setLocationInformation(dummyData)
+	}, [])
   return (
     <main className="App">
 			<header> 
