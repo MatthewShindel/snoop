@@ -20,6 +20,24 @@ export const getLocationWeather = (location) => {
 		})
 }
 
+export const getLatLongWeather = (latitude, longitude) => {
+	const url = `https://open-weather13.p.rapidapi.com/city/latlon/${latitude}/${longitude}`;
+	const options = {
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '8e3c03a57bmshcf9c926514fc323p15ca95jsna29d71f8a66a',
+			'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+		}
+	};
+	return fetch(url, options)
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(`${response.status}: ${response.statusText}`)
+		}
+		return response.json();
+	})
+}
+
 export let dummyData = {
     "coord": {
         "lon": -74.006,

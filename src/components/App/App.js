@@ -19,10 +19,11 @@ function App() {
 	function updateArrayOfLocations(location) {
 		setArrayOfLocations(prevLocations => [...prevLocations,location])
 	}
-
 	useEffect(() => {
 		setLocationInformation(dummyData)
 	}, [])
+
+
   return (
     <main className="App">
 			<header> 
