@@ -1,5 +1,8 @@
 export const getLocationWeather = (location) => {
-	const url = 'https://open-weather13.p.rapidapi.com/city/landon';
+	location = location.trim();
+	let finalLocation = location.split(' ').join('%20');
+
+	const url = `https://open-weather13.p.rapidapi.com/city/${finalLocation}`;
 	const options = {
 		method: 'GET',
 		headers: {
@@ -15,7 +18,7 @@ export const getLocationWeather = (location) => {
 			}
 			return response.json();
 		})
-		.then(data => data)
+		.then(data => console.log(data))
 }
 
 export let dummyData = {

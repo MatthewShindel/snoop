@@ -3,18 +3,25 @@ import './Form.css';
 import { getLocationWeather } from '../../ApiCalls';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-export default function Form({ navigate }) {
+export default function Form({ navigate, updateLocationInformation }) {
 	const [location, setLocation] = useState("");
-	const [zipcode, setZipcode] = useState("");
-	const validZipcode = /^\d{5}(?:[-\s]\d{4})?$/gm;
+	const [latitude, setLatitude] = useState("");
+	const [longitude, setLongitude] = useState("");
+
 	function submitLocationData(event) {
 		event.preventDefault();
-		clearInput();
-		navigate('/snoop/location')
+		getLocationWeather(location)
+		.then(data => {
+			updateLocationInformation(data);
+			clearInput();
+			navigate('/snoop/location')
+			console.log('inside event call');
+		})
 	}
 	function clearInput() {
 		setLocation("");
-		setZipcode(0);
+		setLatitude(0);
+		setLongitude(0);
 	}
 
 	return (

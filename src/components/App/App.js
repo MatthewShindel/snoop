@@ -10,8 +10,14 @@ import { useState } from 'react';
 function App() {
 	const navigate = useNavigate();
 	const [arrayOfLocations,setArrayOfLocations] = useState([]);
-	
+	const [locationInformation, setLocationInformation] = useState({});
 
+	function updateLocationInformation(location) {
+		setLocationInformation(location)
+	}
+	function updateArrayOfLocations(location) {
+		setArrayOfLocations(prevLocations => [...prevLocations,location])
+	}
   return (
     <main className="App">
 			<header> 
@@ -24,8 +30,8 @@ function App() {
 			</header>
 
 			<Routes>
-				<Route path="/snoop" element= {<Form navigate = {navigate}/>} />
-				<Route path="/snoop/location" element= {<Location />} />
+				<Route path="/snoop" element= {<Form navigate = {navigate} updateLocationInformation = {updateLocationInformation} />} />
+				<Route path="/snoop/location" element= {<Location locationInformation={locationInformation}/>} />
 				<Route path="/snoop/savedLocations" element= {<SavedLocations />} />
 				<Route path="*" element= {<Error />} />
 			</Routes>
