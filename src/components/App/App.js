@@ -1,24 +1,47 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router';
 import './App.css';
+import Form from '../Form/Form';
+import Location from '../Location/Location';
+import Error from '../Error/Error';
+import SavedLocations from '../SavedLocations/SavedLocations';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { dummyData } from '../../ApiCalls';
 
 function App() {
+	const navigate = useNavigate();
+	const [arrayOfLocations,setArrayOfLocations] = useState([]);
+	const [locationInformation, setLocationInformation] = useState();
+
+	function updateLocationInformation(location) {
+		setLocationInformation(location)
+	}
+	function updateArrayOfLocations(location) {
+		setArrayOfLocations(prevLocations => [...prevLocations,location])
+	}
+	useEffect(() => {
+		setLocationInformation(dummyData)
+	}, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+			<header> 
+				<h1> This is the App</h1>
+				<NavLink to={'/snoop/savedLocations'}>
+				<h3>
+					Click here to go to your savedLocationsPage
+				</h3>
+				</NavLink>
+			</header>
+
+			<Routes>
+				<Route path="/snoop" element= {<Form navigate = {navigate} updateLocationInformation = {updateLocationInformation} />} />
+				<Route path="/snoop/location" element= {<Location locationInformation={locationInformation} updateArrayOfLocations = {updateArrayOfLocations} navigate = {navigate}/>} />
+				<Route path="/snoop/savedLocations" element= {<SavedLocations arrayOfLocations = {arrayOfLocations}/>} />
+				<Route path="*" element= {<Error />} />
+			</Routes>
+    </main>
   );
 }
 
