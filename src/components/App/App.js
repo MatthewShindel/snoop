@@ -37,8 +37,8 @@ function App() {
 
 			<Routes>
 				<Route path="/snoop" element= {<Form navigate = {navigate} updateLocationInformation = {updateLocationInformation} />} />
-				<Route path="/snoop/location" element= {<Location locationInformation={locationInformation}/>} />
-				<Route path="/snoop/savedLocations" element= {<SavedLocations />} />
+				<Route path="/snoop/location" element= {<Location locationInformation={locationInformation} updateArrayOfLocations = {updateArrayOfLocations} navigate = {navigate}/>} />
+				<Route path="/snoop/savedLocations" element= {<SavedLocations arrayOfLocations = {arrayOfLocations}/>} />
 				<Route path="*" element= {<Error />} />
 			</Routes>
     </main>

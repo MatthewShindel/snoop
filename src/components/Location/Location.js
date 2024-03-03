@@ -1,14 +1,17 @@
 import './Location.css'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { dummyData } from '../../ApiCalls'
 import { useEffect } from 'react';
 
-export default function Location({ locationInformation }) {
+export default function Location({ locationInformation , updateArrayOfLocations, navigate}) {
 	function kelvinToFahrenheit(kelvin) {
 		return (kelvin - 273.15) * 9 / 5 + 32;
 	}
-
-	console.log(typeof locationInformation.main.temp);
+	function addFavoriteLocation(event) {
+		const locationString = `${locationInformation.name}, ${locationInformation.sys.country}`;
+		updateArrayOfLocations(locationString);
+		navigate('/snoop/savedLocations')
+	}
 
 	return (
 		<div className="locationPage">
@@ -33,6 +36,7 @@ export default function Location({ locationInformation }) {
 						<p className='temperatureRange'> {locationInformation && locationInformation.main.temp_min.toFixed(2)}&#8457; - {locationInformation && locationInformation.main.temp_max.toFixed(2)}&#8457;</p>
 					</div>
 				)}
+				<button className='addFavoriteLocation' onClick={addFavoriteLocation} > Add Location as Favorite</button>
 
 			</main>
 			<Link to={'/snoop'} className='homePageLink'>
