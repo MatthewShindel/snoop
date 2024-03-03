@@ -14,19 +14,41 @@ export default function Form({ navigate, updateLocationInformation }) {
 		event.preventDefault();
 		getLocationWeather(location)
 			.then(data => {
+				if (data.cod === '404') {
+					throw new Error('City not found');
+				}
 				updateLocationInformation(data);
 				clearInput();
 				navigate('/snoop/location')
 			})
+			.catch(error => {
+				console.error('Error fetching location weather:', error);
+				if (error.message === 'City not found') {
+						navigate('/errorPage');
+				} else {
+						navigate('/errorPage'); 
+				}
+		});
 	}
 	function submitLatLongData(event) {
 		event.preventDefault();
 		getLatLongWeather(latitude, longitude)
 			.then(data => {
+				if (data.cod === '400') {
+					throw new Error('City not found');
+				}
 				updateLocationInformation(data);
 				clearInput();
 				navigate('/snoop/location')
 			})
+			.catch(error => {
+				console.error('Error fetching location weather:', error);
+				if (error.message === 'City not found') {
+						navigate('/errorPage');
+				} else {
+						navigate('/errorPage'); 
+				}
+		});
 	}
 
 	function clearInput() {
@@ -39,7 +61,7 @@ export default function Form({ navigate, updateLocationInformation }) {
 		<div className='componentContainer'>
 			<h3>Where would you like to go?</h3>
 			<div className='formsContainer'>
-				<form className='locationForm'>
+				<form className='locationForm' id='byName'>
 					<h4>By City Name?</h4>
 					<input
 						type='text'
@@ -51,7 +73,7 @@ export default function Form({ navigate, updateLocationInformation }) {
 					<button className='submitLocationButton' onClick={submitLocationData}>SUBMIT</button>
 				</form>
 
-				<form className='locationForm'>
+				<form className='locationForm' id='byLatLong'>
 				<h4>By Latitude and Longitude?</h4>
 					<input
 						type='text'
@@ -63,7 +85,7 @@ export default function Form({ navigate, updateLocationInformation }) {
 					<input
 						type='text'
 						placeholder='Enter a Longitude: -180 to 180'
-						name='logitude'
+						name='longitude'
 						value={longitude}
 						onChange={event => setLongitude(event.target.value)}
 					/>
