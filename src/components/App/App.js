@@ -26,12 +26,15 @@ function App() {
 	//note, will change /default.png to default.png we deployed
 	return (
 		<main className="App">
-      <header className='appHeader'>
-        <img className='logo' src='/default.png' alt='snoop logo' />
-        <NavLink to={'/snoop/savedLocations'} className='navLink'>
-          <h3>Saved Locations</h3>
-        </NavLink>
-      </header>
+			<header className='appHeader'>
+				<NavLink to={'/snoop'} className='navLink' >
+					<h3>Home</h3>
+				</NavLink>
+			<img className='logo' src='/default.png' alt='snoop logo' />
+				<NavLink to={'/snoop/savedLocations'} className='navLink'>
+					<h3>Saved Locations</h3>
+				</NavLink>
+			</header>
 
 			<Routes>
 				<Route path="/snoop" element={<Form navigate={navigate} updateLocationInformation={updateLocationInformation} />} />

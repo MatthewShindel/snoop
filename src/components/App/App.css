@@ -13,13 +13,18 @@
 }
 
 .appHeader {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* Distribute items evenly along the main axis */
+  height: 150px; /* Set header height */
+  padding: 0 20px; /* Optional padding */
 }
 
 .navLink{
+	width: 100px;
+	font-family: "Open Sans", sans-serif;
+	text-decoration: none;
 	transition: 0.3s;
 }
 
@@ -39,6 +44,6 @@
 }
 
 img {
-	max-height: 150px;
-	max-width: 150px;
+width: 120px;
+height: auto;
 }
