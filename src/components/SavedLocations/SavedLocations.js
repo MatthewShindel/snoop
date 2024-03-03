@@ -1,5 +1,7 @@
 import './SavedLocations.css'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
+
 
 export default function SavedLocations({arrayOfLocations}) {
 	const uniqueLocations = [...new Set(arrayOfLocations)]
@@ -18,4 +20,8 @@ export default function SavedLocations({arrayOfLocations}) {
 			</Link>
 		</div>
 	)
+}
+
+SavedLocations.propTypes = {
+	arrayOfLocations: PropTypes.array.isRequired
 }

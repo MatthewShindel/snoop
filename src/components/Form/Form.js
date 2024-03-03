@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './Form.css';
 import { getLocationWeather, getLatLongWeather } from '../../ApiCalls';
 import { Navigate, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 export default function Form({ navigate, updateLocationInformation }) {
 	const [location, setLocation] = useState("");
@@ -68,4 +70,10 @@ export default function Form({ navigate, updateLocationInformation }) {
 		</div>
 	)
 }
+
+Form.propTypes = {
+	navigate: PropTypes.func.isRequired,
+	updateLocationInformation: PropTypes.func.isRequired
+}
+
 

@@ -2,6 +2,8 @@ import './Location.css'
 import { Link, Navigate } from 'react-router-dom'
 import { dummyData } from '../../ApiCalls'
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 
 export default function Location({ locationInformation , updateArrayOfLocations, navigate}) {
 	function kelvinToFahrenheit(kelvin) {
@@ -47,3 +49,22 @@ export default function Location({ locationInformation , updateArrayOfLocations,
 		</div>
 	)
 }
+
+Location.propTypes = {
+  locationInformation: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    sys: PropTypes.shape({
+      country: PropTypes.string.isRequired
+    }).isRequired,
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        main: PropTypes.string.isRequired
+      })
+    ).isRequired,
+    main: PropTypes.shape({
+      temp: PropTypes.number.isRequired,
+      temp_min: PropTypes.number.isRequired,
+      temp_max: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired
+};
