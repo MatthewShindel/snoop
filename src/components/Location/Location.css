@@ -1,0 +1,42 @@
+.locationPage{
+	display: flex;
+	flex-direction: column;
+}
+
+.locationInformation{
+	display: flex;
+	flex-direction: column;
+	font-family: "Open Sans", sans-serif;
+	margin: auto;
+}
+
+.addFavoriteLocation{
+	font-family: "Open Sans", sans-serif;
+	transition: 0.3s;
+	margin: 5px;
+	border: 0px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+.addFavoriteLocation:hover{
+	transition: 0.3s;
+	scale: 1.2;
+	background-color: bisque;
+}
+
+.temperature{
+	font-family: "Open Sans", sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+p {
+	margin: auto;
+}
+
+h2{
+	margin-bottom: auto;
+}
