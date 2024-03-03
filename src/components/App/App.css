@@ -16,9 +16,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Distribute items evenly along the main axis */
-  height: 150px; /* Set header height */
-  padding: 0 20px; /* Optional padding */
+  justify-content: space-between; 
+  height: 150px; 
+  padding: 0 20px; 
 }
 
 .navLink{

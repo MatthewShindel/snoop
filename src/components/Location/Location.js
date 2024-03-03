@@ -28,8 +28,8 @@ export default function Location({ locationInformation , updateArrayOfLocations,
 				)}
 				{locationInformation.main.temp <= 200 && (
 					<div className='temperature'>
-						<p>  {locationInformation && locationInformation.main.temp.toFixed(2)}&#8457;</p>
-						<p className='temperatureRange'>  {locationInformation && locationInformation.main.temp_min.toFixed(2)}&#8457; - {locationInformation && locationInformation.main.temp_max.toFixed(2)}&#8457;</p>
+						<p> {locationInformation && locationInformation.main.temp.toFixed(2)}&#8457;</p>
+						<p className='temperatureRange'> {locationInformation && locationInformation.main.temp_min.toFixed(2)}&#8457; - {locationInformation && locationInformation.main.temp_max.toFixed(2)}&#8457;</p>
 					</div>
 				)}
 				<button className='addFavoriteLocation' onClick={addFavoriteLocation} > Add Location as Favorite</button>
