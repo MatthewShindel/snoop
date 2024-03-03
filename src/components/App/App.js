@@ -10,39 +10,37 @@ import { dummyData } from '../../ApiCalls';
 
 function App() {
 	const navigate = useNavigate();
-	const [arrayOfLocations,setArrayOfLocations] = useState([]);
+	const [arrayOfLocations, setArrayOfLocations] = useState([]);
 	const [locationInformation, setLocationInformation] = useState();
 
 	function updateLocationInformation(location) {
 		setLocationInformation(location)
 	}
 	function updateArrayOfLocations(location) {
-		setArrayOfLocations(prevLocations => [...prevLocations,location])
+		setArrayOfLocations(prevLocations => [...prevLocations, location])
 	}
 	useEffect(() => {
 		setLocationInformation(dummyData)
 	}, [])
 
-
-  return (
-    <main className="App">
-			<header> 
-				<h1> This is the App</h1>
-				<NavLink to={'/snoop/savedLocations'}>
-				<h3>
-					Click here to go to your savedLocationsPage
-				</h3>
-				</NavLink>
-			</header>
+	//note, will change /default.png to default.png we deployed
+	return (
+		<main className="App">
+      <header className='appHeader'>
+        <img className='logo' src='/default.png' alt='snoop logo' />
+        <NavLink to={'/snoop/savedLocations'} className='navLink'>
+          <h3>Saved Locations</h3>
+        </NavLink>
+      </header>
 
 			<Routes>
-				<Route path="/snoop" element= {<Form navigate = {navigate} updateLocationInformation = {updateLocationInformation} />} />
-				<Route path="/snoop/location" element= {<Location locationInformation={locationInformation} updateArrayOfLocations = {updateArrayOfLocations} navigate = {navigate}/>} />
-				<Route path="/snoop/savedLocations" element= {<SavedLocations arrayOfLocations = {arrayOfLocations}/>} />
-				<Route path="*" element= {<Error />} />
+				<Route path="/snoop" element={<Form navigate={navigate} updateLocationInformation={updateLocationInformation} />} />
+				<Route path="/snoop/location" element={<Location locationInformation={locationInformation} updateArrayOfLocations={updateArrayOfLocations} navigate={navigate} />} />
+				<Route path="/snoop/savedLocations" element={<SavedLocations arrayOfLocations={arrayOfLocations} />} />
+				<Route path="*" element={<Error />} />
 			</Routes>
-    </main>
-  );
+		</main>
+	);
 }
 
 export default App;
