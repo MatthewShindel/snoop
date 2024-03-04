@@ -20,6 +20,7 @@ export default function Location({ locationInformation , updateArrayOfLocations,
 			<main className='locationInformation'>
 				<h2 className='locationName'> {locationInformation && locationInformation.name}, {locationInformation && locationInformation.sys && locationInformation.sys.country}</h2>
 				<h2 className='weather'> {locationInformation && locationInformation.weather[0].main}</h2>
+				<p className='windSpeed'>Wind: {locationInformation && locationInformation.wind.speed} knots</p>
 				{locationInformation.main.temp > 200 && (
 					<div className='temperature'>
 						<p> {kelvinToFahrenheit(locationInformation.main.temp).toFixed(2)}°F</p>
@@ -32,6 +33,8 @@ export default function Location({ locationInformation , updateArrayOfLocations,
 						<p className='temperatureRange'> {locationInformation && locationInformation.main.temp_min.toFixed(2)}&#8457; - {locationInformation && locationInformation.main.temp_max.toFixed(2)}&#8457;</p>
 					</div>
 				)}
+				
+
 				<button className='addFavoriteLocation' onClick={addFavoriteLocation} > Add Location as Favorite</button>
 			</main>
 		</div>
