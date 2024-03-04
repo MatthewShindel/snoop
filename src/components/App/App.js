@@ -11,7 +11,7 @@ import { dummyData } from '../../ApiCalls';
 function App() {
 	const navigate = useNavigate();
 	const [arrayOfLocations, setArrayOfLocations] = useState([]);
-	const [locationInformation, setLocationInformation] = useState();
+	const [locationInformation, setLocationInformation] = useState(dummyData);//only here since techinically needs to check that there is an object like the fetch response
 
 	function updateLocationInformation(location) {
 		setLocationInformation(location)
@@ -23,7 +23,6 @@ function App() {
 		setLocationInformation(dummyData)
 	}, [])
 
-	//note, will change /default.png to default.png we deployed
 	return (
 		<main className="App">
 			<header className='appHeader'>

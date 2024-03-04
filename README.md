@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Snoop:
+![Snoop](/public/default.png)
+
+Snoop is a simplified weather lookup app, usable on phones or on desktop. It provides users with the ability to instantly look up the weather anywhere on the planet. When you login to the amin webpage, you'll be greeted by 2 forms.
+
+![Snoop Homepage](/public/SnoopHomePage.png)
+
+Simply type in either the name of a city or an latitude/longitude coordinate, and you'll get an display that shows you the weather of that location!
+
+![Snoop Weather output](/public/SnoopWeatherOutput.png)
+
+You can also save yoru favorite locations for later, with are store in a list:
+
+![Snoop Homepage](/public/SnoopFavoriteLocations.png)
+
+Be aware that the APi only looks at the most populated city with that name(i.e, the API will return information about London, GB and not London, Ohio). Additionally, the API will also return the closest major city or "node" that has weather data, if you aren't precise with your latitude or longitude.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Using This application:
 
-In the project directory, you can run:
+This application is deployed at this URL:
+https://snoop-three.vercel.app/ 
 
-### `npm start`
+The api that this application uses is located at RapidAPI, specifically this api:
+https://rapidapi.com/worldapi/api/open-weather13
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the future, I'll reduce the throughput of this API in, in which case, you'll either need to wait some time, since the API will rate limit this application, or you can get you own connection to the API and connect it yourself.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Additionally, if you wish you use this application locally, you can for this do the following:
 
-### `npm test`
+1. clone down this repo using 'git clone'
+2. cd into that repo
+3. run 'npm install' to install the needed packages
+4. run 'npm start' to start the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application with run in your broswer at
+[http://localhost:3000](http://localhost:3000)
 
-### `npm run build`
+Addtionally, if you choose to run this application locally, you can run run my Cypress testing suite. This tests the applications functionality, including happy path and sad path that users might take in the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Learning Goals:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+My main goal for this project was to develop an entire React Application on my own without any outside help. I would only use the tools i've learned in my past project, as well as resources if researched myself on the internet. I built this entire application on my own, learned how to deploy the application on my own, and solved any challenges by myself.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Wins and Challenges:
 
-### `npm run eject`
+This application was suprisingly very difficult to build. The main challenges I had were in the CSS styling: making sure all the information on the webpage was visible and easily legible to the user was a major challenge. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+My biggest win, however, were how quickly I built the rest of the application. The cypress testing was very easy for me, despite this being the first time I'm building a test bench on my own. Additionally, the API was suprisingly easy to understand, thanks to how I've worked with RapidAPI's in my past projects.
