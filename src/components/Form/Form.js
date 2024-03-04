@@ -19,7 +19,7 @@ export default function Form({ navigate, updateLocationInformation }) {
 				}
 				updateLocationInformation(data);
 				clearInput();
-				navigate('/snoop/location')
+				navigate('/location')
 			})
 			.catch(error => {
 				console.error('Error fetching location weather:', error);
@@ -39,7 +39,7 @@ export default function Form({ navigate, updateLocationInformation }) {
 				}
 				updateLocationInformation(data);
 				clearInput();
-				navigate('/snoop/location')
+				navigate('/location')
 			})
 			.catch(error => {
 				console.error('Error fetching location weather:', error);

@@ -27,19 +27,19 @@ function App() {
 	return (
 		<main className="App">
 			<header className='appHeader'>
-				<NavLink to={'/snoop'} className='navLink' >
+				<NavLink to={'/'} className='navLink' >
 					<h3>Home</h3>
 				</NavLink>
 			<img className='logo' src='/default.png' alt='snoop logo' />
-				<NavLink to={'/snoop/savedLocations'} className='navLink'>
+				<NavLink to={'/savedLocations'} className='navLink'>
 					<h3>Saved Locations</h3>
 				</NavLink>
 			</header>
 
 			<Routes>
-				<Route path="/snoop" element={<Form navigate={navigate} updateLocationInformation={updateLocationInformation} />} />
-				<Route path="/snoop/location" element={<Location locationInformation={locationInformation} updateArrayOfLocations={updateArrayOfLocations} navigate={navigate} />} />
-				<Route path="/snoop/savedLocations" element={<SavedLocations arrayOfLocations={arrayOfLocations} />} />
+				<Route path="/" element={<Form navigate={navigate} updateLocationInformation={updateLocationInformation} />} />
+				<Route path="/location" element={<Location locationInformation={locationInformation} updateArrayOfLocations={updateArrayOfLocations} navigate={navigate} />} />
+				<Route path="/savedLocations" element={<SavedLocations arrayOfLocations={arrayOfLocations} />} />
 				<Route path="*" element={<Error />} />
 			</Routes>
 		</main>
