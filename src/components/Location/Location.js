@@ -12,7 +12,7 @@ export default function Location({ locationInformation , updateArrayOfLocations,
 	function addFavoriteLocation(event) {
 		const locationString = `${locationInformation.name}, ${locationInformation.sys.country}`;
 		updateArrayOfLocations(locationString);
-		navigate('/snoop/savedLocations')
+		navigate('/savedLocations')
 	}
 
 	return (

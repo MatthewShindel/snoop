@@ -1,6 +1,6 @@
 describe('test happy path', () => {
 	beforeEach(() => {
-		cy.visit('http://localhost:3000/snoop')
+		cy.visit('http://localhost:3000/')
 	})
 	it('should be able to fill out form by location, find weather info, add to favorites and return home', () => {
 		cy.intercept({
@@ -21,18 +21,19 @@ describe('test happy path', () => {
 			.get('.appHeader .navLink').contains('Saved Locations').should('exist')
 			.get('.locationForm input[name="location"]').type('london')
 			.get('.locationForm#byName .submitLocationButton').click()
-			.url().should('eq', 'http://localhost:3000/snoop/location')
+			.url().should('eq', 'http://localhost:3000/location')
 			.get('.locationName').should('have.text', ' New York, US')
 			.get('.weather').should('have.text', ' Clouds')
+			.get('.windSpeed').should('have.text', 'Wind: 11.5 knots')
 			.get('.temperature p').eq(0).should('have.text', ' 55.63℉')
 			.get('.temperatureRange').should('have.text', ' 48.94℉ - 63.16℉')
 			.get('.addFavoriteLocation').should('have.text', ' Add Location as Favorite')
 			.get('.addFavoriteLocation').click()
-			.url().should('eq', 'http://localhost:3000/snoop/savedLocations')
+			.url().should('eq', 'http://localhost:3000/savedLocations')
 			.get('.savedLocationsPage .savedLocations li').should('have.length', 1)
 			.get('.savedLocationsPage .savedLocations li').should('have.text', 'New York, US')
 			.get('.appHeader .navLink').contains('Home').click()
-			.url().should('eq', 'http://localhost:3000/snoop')
+			.url().should('eq', 'http://localhost:3000/')
 	})
 	it('should be able to test other form in webpage' , () => {
 		cy.intercept({
@@ -51,18 +52,19 @@ describe('test happy path', () => {
 		cy.get('#byLatLong input[name="latitude"]').type('51.5085')
     .get('#byLatLong input[name="longitude"]').type('-0.1257')
 		.get('#byLatLong button.submitLocationButton').click()
-		.url().should('include', '/snoop/location')
+		.url().should('include', '/location')
 		.get('.locationName').should('have.text', ' New York, US')
 		.get('.weather').should('have.text', ' Clouds')
+		.get('.windSpeed').should('have.text', 'Wind: 11.5 knots')
 		.get('.temperature p').eq(0).should('have.text', ' 55.63℉')
 		.get('.temperatureRange').should('have.text', ' 48.94℉ - 63.16℉')
 		.get('.addFavoriteLocation').should('have.text', ' Add Location as Favorite')
 		.get('.addFavoriteLocation').click()
-		.url().should('eq', 'http://localhost:3000/snoop/savedLocations')
+		.url().should('eq', 'http://localhost:3000/savedLocations')
 		.get('.savedLocationsPage .savedLocations li').should('have.length', 1)
 		.get('.savedLocationsPage .savedLocations li').should('have.text', 'New York, US')
 		.get('.appHeader .navLink').contains('Home').click()
-		.url().should('eq', 'http://localhost:3000/snoop')
+		.url().should('eq', 'http://localhost:3000/')
 	})
 	it('Should be able to handle sad path errors, ie a bad city name or bad coordinates' , () => {
 		cy.intercept({
@@ -84,7 +86,7 @@ describe('test happy path', () => {
 		.get('.error h2').eq(0).should('contain.text', 'Oh No, you shouldn\'t be here!')
 		.get('.error h2').eq(1).should('contain.text', 'Perhaps a Bad Request?')
 		.get('.error a').click()
-		.url().should('include', '/snoop')
+		.url().should('eq', 'http://localhost:3000/')
 
 		cy.intercept({
 			method: 'GET',
@@ -106,7 +108,7 @@ describe('test happy path', () => {
 		.get('.error h2').eq(0).should('contain.text', 'Oh No, you shouldn\'t be here!')
 		.get('.error h2').eq(1).should('contain.text', 'Perhaps a Bad Request?')
 		.get('.error a').click()
-		.url().should('include', '/snoop')
+		.url().should('eq', 'http://localhost:3000/')
 
 	})
 })
