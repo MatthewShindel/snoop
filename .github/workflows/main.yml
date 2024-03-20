@@ -1,18 +1,30 @@
 name: Cypress Tests
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    environment: Test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5.5.1 # use the explicit version number
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          build: npm run build
-          start: npm start
+          node-version: '16.x' # or specify your desired Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Start server
+        run: npm start
+
+      - name: Run Cypress tests
+        run: npx cypress run --spec 'snoop/cypress/e2e/spec.cy.js'
